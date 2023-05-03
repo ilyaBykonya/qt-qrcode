@@ -77,6 +77,7 @@ void QtQrCode::constructorPrivate(const QByteArray &data, int version, QtQrCode:
     d->proportion = proportion;
     d->caseSensitivity = caseSensitivity;
     d->errorCorrectionLevel = errorCorrectionLevel;
+    encode();
 }
 
 QtQrCode::QtQrCode(const QtQrCode &rhs) : d(rhs.d)
