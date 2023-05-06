@@ -32,22 +32,14 @@
 #include <QSvgGenerator>
 
 QtQrCodePainter::QtQrCodePainter(float margin, const QBrush &background, const QBrush &foreground)
-    : m_margin(margin), m_offsetX(0.0), m_offsetY(0.0), m_svgPaint(false),
-      m_background(background), m_foreground(foreground)
-{
-}
+    : m_margin{ margin }, m_offsetX{ 0.0 }, m_offsetY{ 0.0 }, m_svgPaint{ false },
+    m_background{ background }, m_foreground{ foreground } {}
 
-QtQrCodePainter::~QtQrCodePainter()
-{
-}
 
-void QtQrCodePainter::paint(const QtQrCode &qrCode, QPainter &painter)
-{
+void QtQrCodePainter::paint(const QtQrCode &qrCode, QPainter &painter) {
     this->paint(qrCode, painter, qrCode.width() + m_margin * 2);
 }
-
-void QtQrCodePainter::paint(const QtQrCode &qrCode, QPainter &painter, int width, int height)
-{
+void QtQrCodePainter::paint(const QtQrCode &qrCode, QPainter &painter, int width, int height) {
     m_offsetX = 0.0;
     m_offsetY = 0.0;
     int painterWidt = 0;
@@ -61,9 +53,7 @@ void QtQrCodePainter::paint(const QtQrCode &qrCode, QPainter &painter, int width
     }
     this->paint(qrCode, painter, painterWidt);
 }
-
-void QtQrCodePainter::paint(const QtQrCode &qrCode, QPainter &painter, int painterWidth)
-{
+void QtQrCodePainter::paint(const QtQrCode &qrCode, QPainter &painter, int painterWidth) {
     if (qrCode.data().isEmpty())
         return;
     int width = qrCode.width();
@@ -89,8 +79,7 @@ void QtQrCodePainter::paint(const QtQrCode &qrCode, QPainter &painter, int paint
     m_svgPaint = false;
 }
 
-QImage QtQrCodePainter::toImage(const QtQrCode &qrCode, int size)
-{
+QImage QtQrCodePainter::toImage(const QtQrCode &qrCode, int size) {
     if (size < 0 || qrCode.data().isEmpty())
         return QImage();
 
@@ -104,9 +93,7 @@ QImage QtQrCodePainter::toImage(const QtQrCode &qrCode, int size)
         return img.scaled(size, size);
     return img;
 }
-
-bool QtQrCodePainter::saveSvg(const QtQrCode &qrCode, const QString &fileName, int size)
-{
+bool QtQrCodePainter::saveSvg(const QtQrCode &qrCode, const QString &fileName, int size) {
     if (fileName.isEmpty() || size < 0 || qrCode.data().isEmpty())
         return false;
 
@@ -121,4 +108,37 @@ bool QtQrCodePainter::saveSvg(const QtQrCode &qrCode, const QString &fileName, i
     this->paint(qrCode, painter);
 
     return true;
+}
+
+float QtQrCodePainter::margin() const {
+    return m_margin;
+}
+bool QtQrCodePainter::setMargin(float margin) {
+    if (m_margin != margin) {
+        m_margin = margin;
+        return true;
+    }
+    return false;
+}
+
+const QBrush &QtQrCodePainter::background() const {
+    return m_background;
+}
+bool QtQrCodePainter::setBackground(const QBrush &background) {
+    if (m_background != background) {
+        m_background = background;
+        return true;
+    }
+    return false;
+}
+
+const QBrush &QtQrCodePainter::foreground() const {
+    return m_foreground;
+}
+bool QtQrCodePainter::setForeground(const QBrush &foreground) {
+    if (m_foreground != foreground) {
+        m_foreground = foreground;
+        return true;
+    }
+    return false;
 }

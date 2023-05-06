@@ -2,24 +2,24 @@ DEFINES += __STATIC=static MAJOR_VERSION=3 MINOR_VERSION=9 MICRO_VERSION=0 VERSI
 
 INCLUDEPATH += libqrencode
 SOURCES += \
-    libqrencode/bitstream.c \
-    libqrencode/qrencode.c \
-    libqrencode/mqrspec.c \
-    libqrencode/qrinput.c \
-    libqrencode/qrspec.c \
-    libqrencode/split.c \
-    libqrencode/rsecc.c \
-    libqrencode/mmask.c \
+    $${PWD}/libqrencode/bitstream.c \
+    $${PWD}/libqrencode/qrencode.c \
+    $${PWD}/libqrencode/mqrspec.c \
+    $${PWD}/libqrencode/qrinput.c \
+    $${PWD}/libqrencode/qrspec.c \
+    $${PWD}/libqrencode/split.c \
+    $${PWD}/libqrencode/rsecc.c \
+    $${PWD}/libqrencode/mmask.c \
 #    libqrencode/qrenc.c \
-    libqrencode/mask.c
+    $${PWD}/libqrencode/mask.c
 HEADERS += \
-    libqrencode/qrencode_inner.h \
-    libqrencode/bitstream.h \
-    libqrencode/qrencode.h \
-    libqrencode/mqrspec.h \
-    libqrencode/qrinput.h \
-    libqrencode/qrspec.h \
-    libqrencode/split.h \
-    libqrencode/rsecc.h \
-    libqrencode/mmask.h \
-    libqrencode/mask.h
+    $${PWD}/libqrencode/qrencode_inner.h \
+    $${PWD}/libqrencode/bitstream.h \
+    $${PWD}/libqrencode/qrencode.h \
+    $${PWD}/libqrencode/mqrspec.h \
+    $${PWD}/libqrencode/qrinput.h \
+    $${PWD}/libqrencode/qrspec.h \
+    $${PWD}/libqrencode/split.h \
+    $${PWD}/libqrencode/rsecc.h \
+    $${PWD}/libqrencode/mmask.h \
+    $${PWD}/libqrencode/mask.h

@@ -31,52 +31,28 @@
 #include <QImage>
 #include <QBrush>
 #include <QPainter>
-
 #include "qtqrcode.h"
+#include "qtqrcode_global.h"
 
-class QtQrCodePainter
+class QTQRCODESHARED_EXPORT QtQrCodePainter
 {
 public:
-    QtQrCodePainter(float margin = 0.0, const QBrush &background = Qt::white,
-                    const QBrush &foreground = Qt::black);
-    ~QtQrCodePainter();
-
+    QtQrCodePainter(float margin = 0.0, const QBrush &background = Qt::white, const QBrush &foreground = Qt::black);
+public:
     void paint(const QtQrCode &qrCode, QPainter &painter);
     void paint(const QtQrCode &qrCode, QPainter &painter, int width, int height);
     void paint(const QtQrCode &qrCode, QPainter &painter, int painterWidth);
     QImage toImage(const QtQrCode &qrCode, int size);
     bool saveSvg(const QtQrCode &qrCode, const QString &fileName, int size);
+public:
+    float margin() const;
+    bool setMargin(float margin);
 
-    inline float margin() const { return m_margin; }
-    inline  bool setMargin(float margin)
-    {
-        if (m_margin != margin) {
-            m_margin = margin;
-            return true;
-        }
-        return false;
-    }
+    const QBrush &background() const;
+    bool setBackground(const QBrush &background);
 
-    inline const QBrush &background() const { return m_background; }
-    inline  bool setBackground(const QBrush &background)
-    {
-        if (m_background != background) {
-            m_background = background;
-            return true;
-        }
-        return false;
-    }
-
-    inline const QBrush &foreground() const { return m_foreground; }
-    inline  bool setForeground(const QBrush &foreground)
-    {
-        if (m_foreground != foreground) {
-            m_foreground = foreground;
-            return true;
-        }
-        return false;
-    }
-
+    const QBrush &foreground() const;
+    bool setForeground(const QBrush &foreground);
 private:
     float m_margin;
     float m_offsetX;

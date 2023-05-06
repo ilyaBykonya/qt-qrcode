@@ -1,38 +1,20 @@
 TARGET = qtqrcode
 TEMPLATE = lib
-
-DEFINES += \
-    QTQRCODE_LIBRARY \
-    QTQRCODE_PLUS_FEATURES
-
-contains(DEFINES, QTQRCODE_PLUS_FEATURES) {
-    QT      += gui svg
-
-    SOURCES += \
-        qtqrcodepainter.cpp
-
-    HEADERS +=\
-        qtqrcodepainter.h
-
-} else {
-    QT      -= gui
-}
-
-SOURCES += \
-    qtqrcode.cpp
-
-HEADERS +=\
-    qtqrcode_global.h \
-    qtqrcode.h
-
-INCLUDEPATH += $$PWD
-
-include(../defaults.pri)
-include(libqrencode.pri)
-# Default rules for deployment.
-include(deployment.pri)
+QT += gui
+DEFINES += QTQRCODE_LIBRARY_EXPORT
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+
+include(qt-qrcode-lib.pri)
+# Default rules for deployment.
+include(deployment.pri)
+
+DISTFILES += \
+    qt-qrcode-app.pri \
+    qt-qrcode-lib.pri
+
+

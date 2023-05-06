@@ -30,12 +30,12 @@
 
 #include <QByteArray>
 #include <QSharedDataPointer>
-
 #include "libqrencode/qrencode.h"
+#include "qtqrcode_global.h"
 
 class QtQrCodeData;
 
-class QtQrCode
+class QTQRCODESHARED_EXPORT QtQrCode
 {
 public:
     enum Proportion {

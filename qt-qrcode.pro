@@ -3,16 +3,9 @@ lessThan(QT_MAJOR_VERSION, 5) {
 }
 
 TEMPLATE = subdirs
-
-DEFINES +=
-
 SUBDIRS += \
-    widget \
-    quickitem \
+    examples \
     lib
 
-widget.depends = lib
-quickitem.depends = lib
+examples.depends = lib
 
-OTHER_FILES += \
-    defaults.pri

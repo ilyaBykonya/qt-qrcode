@@ -30,10 +30,16 @@
 
 #include <QtCore/qglobal.h>
 
+#if not defined(QTQRCODESHARED_EXPORT)
 #if defined(QTQRCODE_LIBRARY)
-#  define QTQRCODESHARED_EXPORT Q_DECL_EXPORT
+    #if defined(QTQRCODE_LIBRARY_EXPORT)
+        #define QTQRCODESHARED_EXPORT Q_DECL_EXPORT
+    #else
+        #define QTQRCODESHARED_EXPORT Q_DECL_IMPORT
+    #endif
 #else
-#  define QTQRCODESHARED_EXPORT Q_DECL_IMPORT
+    #define QTQRCODESHARED_EXPORT
+#endif
 #endif
 
 #endif // QTQRCODE_GLOBAL_H
